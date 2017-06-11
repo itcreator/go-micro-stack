@@ -17,9 +17,14 @@ before_install:
 script:
   - docker version
   - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
-  - export REPO=itcreator/go-micro-stack
   - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH ; fi`
-  - docker build -f go/Dockerfile -t $REPO:$COMMIT .
-  - docker tag $REPO:$COMMIT $REPO:$TAG
-  - docker tag $REPO:$COMMIT $REPO:travis-$TRAVIS_BUILD_NUMBER
-  - docker push $REPO
+  - export GO_REPO=itcreator/go-micro-stack
+  - docker build -f go/Dockerfile -t $GO_REPO:$COMMIT go
+  - docker tag $GO_REPO:$COMMIT $GO_REPO:$TAG
+  - docker tag $GO_REPO:$COMMIT $GO_REPO:travis-$TRAVIS_BUILD_NUMBER
+  - export CONSUL_REPO=itcreator/go-micro-stack-consul
+  - docker build -f consul/Dockerfile -t $CONSUL_REPO:$COMMIT consul
+  - docker tag $CONSUL_REPO:$COMMIT $CONSUL_REPO:$TAG
+  - docker tag $CONSUL_REPO:$COMMIT $CONSUL_REPO:travis-$TRAVIS_BUILD_NUMBER
+  - docker push $GO_REPO $CONSUL_REPO
+
