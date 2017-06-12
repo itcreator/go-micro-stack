@@ -28,3 +28,8 @@ script:
   - docker tag $CONSUL_REPO:$COMMIT $CONSUL_REPO:$TAG
   - docker tag $CONSUL_REPO:$COMMIT $CONSUL_REPO:travis-$TRAVIS_BUILD_NUMBER
   - docker push $CONSUL_REPO
+  - export PROTOC_REPO=itcreator/go-micro-stack-protoc-go-micro
+  - docker build -f protoc-go-micro/Dockerfile -t $PROTOC_REPO:$COMMIT protoc-go-micro
+  - docker tag $PROTOC_REPO:$COMMIT $PROTOC_REPO:$TAG
+  - docker tag $PROTOC_REPO:$COMMIT $PROTOC_REPO:travis-$TRAVIS_BUILD_NUMBER
+  - docker push $PROTOC_REPO
