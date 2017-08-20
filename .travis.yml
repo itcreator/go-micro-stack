@@ -10,9 +10,9 @@ env:
     - secure: "pQxd8FFBTE0Gjlzxd8AZD7f9I7FKXdXMlTj7I4quLetDNUcQNE8LpA1LD/wWN+/EbGiK58XgJsK9bAqowLqIdESQxzbdZtoUDBKBs6ZsXtsRLEz3nW9OMGml4EwUZBGNwz+AjjUtDNPqprd+iXkuMWJ3ZDc096likVym/wQ80Jx4vsWJ9sFw6ntCjlv3jVGh49IQifw17z+4ALert1td/QLUVKFSeBSKFjFJElKv9eA5jgRC9s9Y6P36uQymRhNMaZcwZMC1F7FuXCoyfUTAUPJyK0pXGMOg966895hDikydD2tkGz+aniPS7Z22FbAJeZx14g0ztdLcFD66j8nu6jhT9lpMguvC1Kula0zjdRJRuRUGwSDtwYgt/zaz7KkvoZfH+6+DUPC0oJPpnHTD3+O+NXEMBa34ch20mDA0hJ7Mm2GeT28E+bKTmwZr0Bd3JdWI6e2xAfSo2TOcowOXv1Vv59h8Eev1MIs6ofUfVnWjTT0ye8C4nHwHr8P3jAGf0L9LbuSePu5y28o1J/glvyOe3q+8jDUosiHVeyQyS1HekUos4ZCE6JdcZ2mLD09b4C9bDQpFpNyff8GiIdohGkbpVUXiMXpe/1JrIUuNSemGTidslXqOO8hewxVrcMgU1wb6w3WMF0e6o4qMOr0F8xnT18ZFdq7+ddisdbsX2KU=" # DOCKER_PASS
     - COMMIT=${TRAVIS_COMMIT::8}
 
-before_install:
-    - apt-cache madison docker-engine
-    - sudo apt-get -o Dpkg::Options::="--force-confnew" install -y docker-engine
+#before_install:
+#    - apt-cache madison docker-engine
+#    - sudo apt-get -o Dpkg::Options::="--force-confnew" install -y docker-engine
 
 script:
   - docker version
