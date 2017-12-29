@@ -1,4 +1,4 @@
-FROM consul:0.9.2
+FROM consul:1.0.2
 
 COPY ./scripts /scripts
 
