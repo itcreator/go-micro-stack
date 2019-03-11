@@ -8,6 +8,12 @@ docker infrastructure for golang and microservices
 
 # Changelog
 
+## 0.3.0
+
+* Update Consul up to 1.4.3
+* Update Golang up to 1.12
+
+
 ## 0.2.0
 
 * Update Consul up to 1.0.2
