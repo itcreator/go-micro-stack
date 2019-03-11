@@ -1,4 +1,4 @@
-FROM golang:1.9
+FROM golang:1.12
 
 RUN mkdir /src
 WORKDIR /src
@@ -7,8 +7,8 @@ WORKDIR /src
 RUN apt-get update -y \
     && apt-get install -y unzip \
     && cd /tmp \
-    && wget https://releases.hashicorp.com/consul/1.0.2/consul_1.0.2_linux_amd64.zip \
-    && unzip consul_1.0.2_linux_amd64.zip \
+    && wget https://releases.hashicorp.com/consul/1.4.3/consul_1.4.3_linux_amd64.zip \
+    && unzip consul_1.4.3_linux_amd64.zip \
     && chmod +x consul \
     && mv consul /usr/bin/consul \
     && rm -R /tmp/* \

@@ -17,18 +17,27 @@ script:
   - docker version
   - docker login -u $DOCKER_USER -p $DOCKER_PASS
   - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH ; fi`
+  # GO
   - export GO_REPO=itcreator/go-micro-stack
   - docker build -f go/Dockerfile -t $GO_REPO:$COMMIT go
   - docker tag $GO_REPO:$COMMIT $GO_REPO:$TAG
   - docker tag $GO_REPO:$COMMIT $GO_REPO:travis-$TRAVIS_BUILD_NUMBER
   - docker push $GO_REPO
+  # CONSUL
   - export CONSUL_REPO=itcreator/go-micro-stack-consul
   - docker build -f consul/Dockerfile -t $CONSUL_REPO:$COMMIT consul
   - docker tag $CONSUL_REPO:$COMMIT $CONSUL_REPO:$TAG
   - docker tag $CONSUL_REPO:$COMMIT $CONSUL_REPO:travis-$TRAVIS_BUILD_NUMBER
   - docker push $CONSUL_REPO
+  #PROTOC
   - export PROTOC_REPO=itcreator/go-micro-stack-protoc-go-micro
   - docker build -f protoc-go-micro/Dockerfile -t $PROTOC_REPO:$COMMIT protoc-go-micro
   - docker tag $PROTOC_REPO:$COMMIT $PROTOC_REPO:$TAG
   - docker tag $PROTOC_REPO:$COMMIT $PROTOC_REPO:travis-$TRAVIS_BUILD_NUMBER
   - docker push $PROTOC_REPO
+  #GOSWAGGER
+  - export GOSWAGGER_REPO=itcreator/go-micro-stack-goswagger
+  - docker build -f go-swagger/Dockerfile -t $GOSWAGGER_REPO:$COMMIT go-swagger
+  - docker tag $GOSWAGGER_REPO:$COMMIT $GOSWAGGER_REPO:$TAG
+  - docker tag $GOSWAGGER_REPO:$COMMIT $GOSWAGGER_REPO:travis-$TRAVIS_BUILD_NUMBER
+  - docker push $GOSWAGGER_REPO
