@@ -1,4 +1,4 @@
-FROM golang:1.12
+FROM golang:1.13
 
 RUN mkdir /tmp/protobuf
 WORKDIR /tmp/protobuf
@@ -8,7 +8,7 @@ WORKDIR /tmp/protobuf
 RUN apt-get update -y \
     && apt-get install -y autoconf automake libtool curl make g++ unzip \
     && apt-get autoremove \
-    && git clone https://github.com/google/protobuf -b 3.3.x --depth 1  . \
+    && git clone https://github.com/google/protobuf -b 3.10.x --depth 1  . \
     && ./autogen.sh \
     && ./configure \
     && make \
